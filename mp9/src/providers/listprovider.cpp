@@ -66,19 +66,22 @@ void StudentList::display()
          << "FirstName\t  "
          << "Quiz 1\t  "
          << "Quiz 2\t  "
-         << "Quiz 3" << endl
+         << "Quiz 3\t"
+         << "Remarks" << endl
          << endl;
     while (temp != NULL)
     {
         cout << setw(4) << temp->data.id
              << setw(4) << "\t" << temp->data.lastName
-             << setw(8) << "\t" << temp->data.firstName << "\t\t";
+             << setw(8) << "\t" << temp->data.firstName << "\t";
+        float ave = 0;
         for (int i = 0; i < 3; i++)
         {
-            cout << setw(8) << fixed << temp->data.grades[i] << setprecision(2) << "\t";
+            ave += temp->data.grades[i];
+            cout << "\t" << setw(8) << fixed << temp->data.grades[i] << setprecision(2);
         }
         temp = temp->next;
-        cout << endl;
+        cout << "\t" << (ave < 75 ? "Failed" : "Passed") << endl;
     }
 }
 
