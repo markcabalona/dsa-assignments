@@ -67,6 +67,7 @@ void StudentList::display()
          << "Quiz 1\t  "
          << "Quiz 2\t  "
          << "Quiz 3\t"
+         << "Average\t\t"
          << "Remarks" << endl
          << endl;
     while (temp != NULL)
@@ -80,8 +81,10 @@ void StudentList::display()
             ave += temp->data.grades[i];
             cout << "\t" << setw(8) << fixed << temp->data.grades[i] << setprecision(2);
         }
+
+        ave = ave / 3;
         temp = temp->next;
-        cout << "\t" << (ave < 75 ? "Failed" : "Passed") << endl;
+        cout << "\t" << setw(4) << fixed << ave << setprecision(2) <<"\t\t"<< (ave < 75 ? "Failed" : "Passed") << endl;
     }
 }
 
